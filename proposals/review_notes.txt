@@ -1,0 +1,51 @@
+REVIEWER AGENT — Review Notes for proposals/draft_v1.md
+Tender: INDHCIETQ25000115 | Hwa Chong Institution | 5 Laptops (STMP Projects)
+Reviewed: 2026-05-04
+========================================================================
+
+FINDING 1 — HALLUCINATED SPECS (High Risk)
+------------------------------------------
+Section 2 (Technical Specifications) lists specific hardware details — Intel Core i7
+12th Gen, 16 GB DDR5, 512 GB NVMe SSD, Wi-Fi 6E, Thunderbolt 4 — that were invented
+without access to the actual requirement document (Appendix 1 is referenced but noted
+as requiring login to download). If the real specs differ (e.g., the agency requires
+a specific brand, or 8 GB RAM, or a 256 GB drive), this proposal misrepresents our
+offer and could be disqualified or lead to a contract we cannot fulfil.
+
+ACTION: Obtain and read "Requirement Specifications for purchase for 5 laptops for
+STMP (1).doc" before finalising. Replace invented specs with confirmed ones, or mark
+each row explicitly as "to be confirmed against Appendix 1."
+
+------------------------------------------------------------------------
+
+FINDING 2 — MISSING CONTACT & COMPANY IDENTITY (Medium Risk)
+--------------------------------------------------------------
+Section 5 (Company Credentials) makes vague claims ("Registered GeBIZ supplier in
+good standing", "track record with educational institutions") with no verifiable
+details: no UEN, no company name, no GeBIZ vendor registration number, no named
+past clients or reference projects. A procurement officer cannot verify any of these
+claims, which weakens our credibility and may cause the bid to be set aside.
+
+ACTION: Insert the actual company name, UEN, GeBIZ vendor ID, and at least one
+concrete past delivery (e.g., "Supplied 20 units to [Institution] in [Year]"). Also
+add a named contact person with phone and email for the Point of Contact row in
+Section 4.
+
+------------------------------------------------------------------------
+
+FINDING 3 — GST CLAIM IS POTENTIALLY INCORRECT (Medium Risk)
+-------------------------------------------------------------
+Section 3 states "Prices are inclusive of GST" but the pricing table does not show
+a GST line item or the pre-GST base price. Singapore's current GST rate is 9%. If
+the $1,200 unit price is ex-GST, the actual total is $6,000 + $540 GST = $6,540
+(or $6,002.40 after discount) — materially different from the $5,520 quoted. Quoting
+"inclusive of GST" without breaking it out is also non-compliant with standard
+GeBIZ quotation formats, which typically require GST to be shown separately.
+
+ACTION: Decide whether $1,200 is inclusive or exclusive of GST. Add a GST line to
+the pricing table (e.g., GST 9% = $496.80) and adjust the total accordingly. Align
+the footer note to match.
+
+========================================================================
+END OF REVIEW — 3 findings, 0 blocking (APPROVED gate not yet reached).
+Resolve all findings before requesting APPROVED status.
