@@ -5,13 +5,13 @@ from playwright.async_api import async_playwright
 
 GEBIZ_URL = "https://www.gebiz.gov.sg/ptn/opportunity/BOListing.xhtml"
 SEARCH_TERM = "laptop"
-MAX_RESULTS = 5
+MAX_RESULTS = 20
 OUTPUT_FILE = "found_tenders.json"
 
 
 def parse_ref_number(header_text: str) -> str:
-    # Header format: "<n>\n<Type> - <REF>\n<STATUS>"
-    match = re.search(r'-\s+(\S+)\n', header_text)
+    # Format: "<n>\n<Type> - <REF> / <ALT-REF>\n<STATUS>"
+    match = re.search(r'-\s+([A-Z0-9]+)', header_text)
     return match.group(1) if match else ""
 
 
@@ -35,11 +35,12 @@ async def hunt() -> list[dict]:
         page = await browser.new_page()
 
         print(f"Opening GeBIZ opportunities page...")
-        await page.goto(GEBIZ_URL, wait_until="networkidle", timeout=30000)
+        await page.goto(GEBIZ_URL, wait_until="domcontentloaded", timeout=60000)
+        await page.wait_for_timeout(3000)
 
         print(f"Searching for '{SEARCH_TERM}'...")
         search_input = page.locator("#contentForm\\:j_idt183_searchBar_INPUT-SEARCH")
-        await search_input.wait_for(state="visible", timeout=30000)
+        await search_input.wait_for(state="visible", timeout=60000)
         await search_input.click()
         await search_input.fill(SEARCH_TERM)
         await page.locator("#contentForm\\:j_idt183_searchBar_BUTTON-GO").click()
@@ -71,8 +72,11 @@ async def hunt() -> list[dict]:
                 "closing_date": parse_closing_date(content),
                 "status": header.splitlines()[-1].strip() if header.splitlines() else "",
             }
-            tenders.append(tender)
-            print(f"  [{tender['reference_number']}] {tender['title']} — closes {tender['closing_date']}")
+            if "laptop" in tender["title"].lower():
+                tenders.append(tender)
+                print(f"  [{tender['reference_number']}] {tender['title']} — closes {tender['closing_date']}")
+            else:
+                print(f"  [skip] {tender['title'][:60]}...")
 
         await browser.close()
         return tenders
