@@ -38,8 +38,11 @@ async def hunt() -> list[dict]:
         await page.goto(GEBIZ_URL, wait_until="networkidle", timeout=30000)
 
         print(f"Searching for '{SEARCH_TERM}'...")
-        await page.fill("#contentForm\\:j_idt183_searchBar_INPUT-SEARCH", SEARCH_TERM)
-        await page.click("#contentForm\\:j_idt183_searchBar_BUTTON-GO")
+        search_input = page.locator("#contentForm\\:j_idt183_searchBar_INPUT-SEARCH")
+        await search_input.wait_for(state="visible", timeout=30000)
+        await search_input.click()
+        await search_input.fill(SEARCH_TERM)
+        await page.locator("#contentForm\\:j_idt183_searchBar_BUTTON-GO").click()
         await page.wait_for_load_state("networkidle", timeout=30000)
 
         # Expand all result rows
