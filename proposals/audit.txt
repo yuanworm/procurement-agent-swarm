@@ -1,0 +1,47 @@
+REVIEWER AGENT — Audit for proposals/new_bid.md
+Tender: ITA000ETQ26000006 / ITQ-2026-359 | MDDI | 5 GPU Boxes + 5 Laptops
+Reviewed: 2026-05-04
+========================================================================
+
+FINDING 1 — UNVERIFIED HARDWARE SPECS (High Risk)
+--------------------------------------------------
+Sections 2A and 2B list specific hardware (i7-13th Gen, 32GB DDR5, RTX 5090 in a
+Thunderbolt 4 enclosure) that were inferred without access to the actual tender
+documents (ITQ-2026-359 Document.pdf and Annex A - Summary of Costs.xlsx both
+require login to download). The RTX 5090 GPU is confirmed from the GeBIZ items
+list, but laptop model, RAM, storage, and eGPU enclosure brand are unverified.
+
+ACTION: Download and read ITQ-2026-359 Document.pdf before finalising Section 2.
+Replace any spec that does not appear in the document with "as per ITQ-2026-359
+specifications" to avoid misrepresentation.
+
+------------------------------------------------------------------------
+
+FINDING 2 — COMPANY CREDENTIALS INCOMPLETE (High Risk — Blocks Submission)
+---------------------------------------------------------------------------
+Section 5 contains explicit placeholder fields: Vendor ID and UEN are marked
+[TO FILL]. A GeBIZ Open Quotation submission without a valid GeBIZ vendor
+registration number will be rejected at intake. This is a hard blocker.
+
+ACTION: Fill in the actual company name, UEN, and GeBIZ Vendor ID before
+requesting APPROVED status. Also add at least one verifiable past delivery
+(agency name, item, year) to support the "prior supply" claim.
+
+------------------------------------------------------------------------
+
+FINDING 3 — CLOSING DATE UNKNOWN (Medium Risk)
+----------------------------------------------
+The tender closing date scraped from GeBIZ is "N/A" — the Researcher could not
+extract it from the detail page. Submitting without knowing the deadline risks
+missing the window entirely, especially given our 14-business-day delivery
+timeline which could push past an imminent close date.
+
+ACTION: Visit the GeBIZ tender page directly
+(https://www.gebiz.gov.sg/ptn/opportunity/directlink.xhtml?docCode=ITA000ETQ26000006)
+while logged in to confirm the closing date. Record it in the proposal header
+before submission.
+
+========================================================================
+VERDICT: 2 HIGH-RISK findings — DO NOT request APPROVED until resolved.
+Loop halted. Awaiting human review.
+========================================================================
